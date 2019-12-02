@@ -20,4 +20,4 @@ RUN rm -rf /usr/src/install
 
 COPY . .
 
-CMD ["python", "-m", "pytest"]
+CMD ["python", "-m", "pytest", "-v"]
