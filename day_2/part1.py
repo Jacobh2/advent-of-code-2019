@@ -39,7 +39,6 @@ def execute_intcomputer(opcodes):
 
         pc += 4
 
-    print("Program halted")
     return opcodes
 
 
