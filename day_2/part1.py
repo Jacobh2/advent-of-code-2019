@@ -43,7 +43,11 @@ def execute_intcomputer(opcodes):
 
 
 if __name__ == "__main__":
-    opcodes = _read_input("input.txt")
+    from sys import argv
+    from os.path import join
+
+    folder_path = argv[0].split("/")[0]
+    opcodes = _read_input(join(folder_path, "input.txt"))
     opcodes[1] = 12
     opcodes[2] = 2
     output = execute_intcomputer(opcodes)
