@@ -3,6 +3,8 @@
 ## Day 1: The Tyranny of the Rocket Equation
 Language: Python
 
+## Day 2: 1202 Program Alarm
+Language: Python
 
-## Dat 2: 1202 Program Alarm
+## Day 3: 
 Language: Python

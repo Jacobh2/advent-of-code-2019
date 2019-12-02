@@ -16,6 +16,5 @@ def test_execute_intcomputer():
     ]
 
     for x, y in zip(input_execute_intcomputer, output_execute_intcomputer):
-        print("________")
         assert day_2.part1.execute_intcomputer(x) == y
 
