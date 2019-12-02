@@ -17,7 +17,7 @@ Language:
 
 ## Day 2: 1202 Program Alarm
 Language:
-- Python
+- Python (`py`)
 
 ## Day 3: 
 Language:
