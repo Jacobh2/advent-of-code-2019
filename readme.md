@@ -10,15 +10,15 @@ Where `<day>` is one of the day folders (e.g. `day_1`, `day_2`, etc), `<part>` i
 
 For example, to run part 2 of day 1 in Python, use `make day1-part2-py`
 
-## Day 1: The Tyranny of the Rocket Equation
+## [Day 1: The Tyranny of the Rocket Equation](./day_1/README.md)
 Language:
 - Python (`py`)
 - JS ES6 (`js`)
 
-## Day 2: 1202 Program Alarm
+## [Day 2: 1202 Program Alarm](./day_2/README.md)
 Language:
 - Python (`py`)
 
-## Day 3: 
+## [Day 3: ](./day_3/README.md)
 Language:
 - Python
