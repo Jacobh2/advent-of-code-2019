@@ -34,26 +34,26 @@ def _calculate_coordinate(position, wire):
 def _add_steps(positions, previous_position, position, for_x):
     if for_x:
         x = previous_position[0]
-        if previous_position[1] > position[1]:
-            start_y = position[1]
-            end_y = previous_position[1]
-        else:
-            start_y = previous_position[1]
-            end_y = position[1]
-
-        for y in range(start_y, end_y):
-            positions.add((x, y))
+        step = -1 if previous_position[1] > position[1] else 1
+        start_y = previous_position[1]
+        end_y = position[1]
+        for y in range(start_y, end_y, step):
+            if isinstance(positions, list):
+                if (x, y) not in positions:
+                    positions.append((x, y))
+            else:
+                positions.add((x, y))
     else:
         y = previous_position[1]
-        if previous_position[0] > position[0]:
-            start_x = position[0]
-            end_x = previous_position[0]
-        else:
-            start_x = previous_position[0]
-            end_x = position[0]
-
-        for x in range(start_x, end_x):
-            positions.add((x, y))
+        step = -1 if previous_position[0] > position[0] else 1
+        start_x = previous_position[0]
+        end_x = position[0]
+        for x in range(start_x, end_x, step):
+            if isinstance(positions, list):
+                if (x, y) not in positions:
+                    positions.append((x, y))
+            else:
+                positions.add((x, y))
 
 
 def play_wire(origin, wires):
