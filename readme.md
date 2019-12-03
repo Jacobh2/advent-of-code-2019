@@ -22,3 +22,8 @@ Language:
 ## [Day 3: Crossed Wires](./day_3/README.md)
 Language:
 - Python (`py`)
+
+## [Day 4: ](./day_4/README.md)
+Language:
+- Python
+

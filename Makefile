@@ -27,3 +27,10 @@ day3-part1-py:
 
 day3-part2-py:
 	docker build -f Dockerfile.pytest -t pythonrun . && docker run --rm -it pythonrun python day_3/part2.py
+
+# DAY 4
+day4-part1-py:
+	docker build -f Dockerfile.pytest -t pythonrun . && docker run --rm -it pythonrun python day_4/part1.py
+
+day4-part2-py:
+	docker build -f Dockerfile.pytest -t pythonrun . && docker run --rm -it pythonrun python day_4/part2.py
