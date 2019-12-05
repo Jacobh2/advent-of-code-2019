@@ -6,29 +6,19 @@ def _read_input(path):
 def _get_value(param, value, opcodes):
     if param == 0:
         address = value % len(opcodes)
-        print(
-            "Parameterized mode, getting value at position",
-            value,
-            "address",
-            address,
-            "=",
-            opcodes[address],
-        )
         # Address
         return opcodes[address]
     elif param == 1:
-        print("Immediate mode, getting value", value, "directly")
         # Immediate
         return value
     raise Exception("Unknown param {}".format(param))
 
 
 def halt(args, params, opcodes):
-    return False
+    return False, None
 
 
 def _store(address, value, opcodes):
-    print("Storing", value, "at addr", address)
     opcodes[address] = value
 
 
@@ -38,7 +28,7 @@ def add(args, params, opcodes):
     y_value = _get_value(params[1], args[1], opcodes)
     z_value = args[2]  # _get_value(params[2], args[2], opcodes)
     _store(z_value, x_value + y_value, opcodes)
-    return True
+    return True, None
 
 
 def mul(args, params, opcodes):
@@ -47,14 +37,14 @@ def mul(args, params, opcodes):
     y_value = _get_value(params[1], args[1], opcodes)
     z_value = args[2]  # _get_value(params[2], args[2], opcodes)
     _store(z_value, x_value * y_value, opcodes)
-    return True
+    return True, None
 
 
 def store(args, params, opcodes):
     address = args[0]  # _get_value(params[0], args[0], opcodes)
     value = int(input("Input: "))
     _store(address, value, opcodes)
-    return True
+    return True, None
 
 
 def pprint(args, params, opcodes):
@@ -63,8 +53,8 @@ def pprint(args, params, opcodes):
     else:
         value = args[0]
     # address = _get_value(params[0], args[0], opcodes)
-    print("    >>>> Output:", value)
-    return value == 0
+    print("Output:", value)
+    return value == 0, None
 
 
 functions = {99: (halt, 0), 1: (add, 3), 2: (mul, 3), 3: (store, 1), 4: (pprint, 1)}
@@ -87,11 +77,14 @@ def execute_intcomputer(opcodes):
         # format args
         args = opcodes[pc + 1 : pc + 1 + num_params]
 
-        if not fn(args, params, opcodes):
-            print("Halting at pc", pc)
+        should_continue, new_pc = fn(args, params, opcodes)
+        if not should_continue:
             break
 
-        pc += 1 + num_params
+        if new_pc:
+            pc = new_pc
+        else:
+            pc += 1 + num_params
 
     return opcodes
 
