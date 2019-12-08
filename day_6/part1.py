@@ -22,22 +22,7 @@ def go(leaf, reverse, chain):
         chain[start].append(leaf)
 
 
-check = {
-    "C": 2,
-    "L": 7,
-    "F": 5,
-    "D": 3,
-    "J": 5,
-    "E": 4,
-    "H": 3,
-    "B": 1,
-    "I": 4,
-    "G": 2,
-    "K": 6,
-}
-
-
-def arithm_sum(length):
+def calculate_cost(length):
     return ((1 + length) / 2) * length
 
 
@@ -71,32 +56,27 @@ def calculate_checksum(input_str):
     for leaf in leaves:
         go(leaf, reverse, chain)
 
-    # 1 & 2
+    # Create a list for each leaf, from origin to the leaf
     all_costs = 0
     lists = list()
     for k, v in chain.items():
         total = v[::-1] + [k]
-        all_costs += arithm_sum(len(v))
+        all_costs += calculate_cost(len(v))
         lists.append(total)
 
-    all_costs = int(all_costs)
-
-    # 3
+    # Calculate how much we need to remove, since some paths will be counted more than once
     to_be_removed = find_similar(lists)
     cost_to_remove = 0
     for key, cost in to_be_removed.items():
-        cost_to_remove += (len(key.split("-"))-1) * cost
+        cost_to_remove += (len(key.split("-")) - 1) * cost
 
     return all_costs - cost_to_remove
+
 
 if __name__ == "__main__":
     input_str = _read_file("input.txt")
 
-    # input_str = "COM)BBB,BBB)CCC,CCC)DDD,DDD)EEE,EEE)FFF,BBB)GGG,GGG)HHH"
+    total_cost = calculate_checksum(input_str)
 
-    total_cost = calculate_checksum(input_str) 
-
-        #251208
     print("Total cost:", total_cost)
-    exit(0)
 
