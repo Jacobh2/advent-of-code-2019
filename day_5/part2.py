@@ -1,4 +1,7 @@
-import part1
+try:
+    import part1
+except ImportError:
+    from day_5 import part1
 
 
 def jump_if_true(args, params, opcodes):

@@ -15,6 +15,8 @@ def _get_value(param, value, opcodes):
 
 
 def halt(args, params, opcodes):
+    print("HALT!!")
+    raise Exception()
     return False, None, None
 
 
