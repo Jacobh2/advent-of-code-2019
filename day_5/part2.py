@@ -1,16 +1,19 @@
-import part1
+try:
+    import part1
+except ImportError:
+    from day_5 import part1
 
 
 def jump_if_true(args, params, opcodes):
     check_value = part1._get_value(params[0], args[0], opcodes)
     jumpt_to = part1._get_value(params[1], args[1], opcodes)
-    return True, jumpt_to if check_value != 0 else None
+    return True, jumpt_to if check_value != 0 else None, None
 
 
 def jump_if_false(args, params, opcodes):
     check_value = part1._get_value(params[0], args[0], opcodes)
     jumpt_to = part1._get_value(params[1], args[1], opcodes)
-    return True, jumpt_to if check_value == 0 else None
+    return True, jumpt_to if check_value == 0 else None, None
 
 
 def less_than(args, params, opcodes):
@@ -21,7 +24,7 @@ def less_than(args, params, opcodes):
         part1._store(address, 1, opcodes)
     else:
         part1._store(address, 0, opcodes)
-    return True, None
+    return True, None, None
 
 
 def equals(args, params, opcodes):
@@ -32,7 +35,7 @@ def equals(args, params, opcodes):
         part1._store(address, 1, opcodes)
     else:
         part1._store(address, 0, opcodes)
-    return True, None
+    return True, None, None
 
 
 part1.functions[5] = (jump_if_true, 2)
