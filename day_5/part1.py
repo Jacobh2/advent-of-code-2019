@@ -16,7 +16,7 @@ def _get_value(param, value, opcodes):
 
 def halt(args, params, opcodes):
     print("HALT!!")
-    raise Exception()
+    # raise Exception()
     return False, None, None
 
 
@@ -56,15 +56,19 @@ def pprint(args, params, opcodes, print_output=True):
     else:
         value = args[0]
     if print_output:
-        print("Output:", value)
+        print("Computer Output:", value)
     return value == 0, None, value
 
 
 functions = {99: (halt, 0), 1: (add, 3), 2: (mul, 3), 3: (store, 1), 4: (pprint, 1)}
 
 
-def execute_intcomputer(opcodes, get_input_fn=None, print_output=True):
-    pc = 0
+def execute_intcomputer(opcodes, get_input_fn=None, print_output=True, continue_pc=None, name=None):
+    if continue_pc:
+        pc = continue_pc
+    else:
+        pc = 0
+
     output = None
     while True:
         opcode_parts = opcodes[pc]
@@ -99,7 +103,7 @@ def execute_intcomputer(opcodes, get_input_fn=None, print_output=True):
         else:
             pc += 1 + num_params
 
-    return opcodes, output
+    return opcodes, output, pc
 
 
 if __name__ == "__main__":
