@@ -1,5 +1,7 @@
 # Advent Of Code 2019
 
+[![Build Status](https://travis-ci.com/Jacobh2/advent-of-code-2019.svg?branch=master)](https://travis-ci.com/Jacobh2/advent-of-code-2019)
+
 Advent of Code 2019 can be found [here](https://adventofcode.com/2019)
 
 ## Possible to run using Makefile and Docker
