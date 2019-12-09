@@ -25,5 +25,25 @@ Language:
 
 ## [Day 4: Secure Container](./day_4/README.md)
 Language:
-- Python
+- Python (`py`)
+
+## [Day 5: Sunny with a Chance of Asteroids](./day_5/README.md)
+Language:
+- Python (`py`)
+
+## [Day 6: Universal Orbit Map](./day_6/README.md)
+Language:
+- Python (`py`)
+
+## [Day 7: Amplification Circuit](./day_7/README.md)
+Language:
+- Python (`py`)
+
+## [Day 8: Space Image Format](./day_8/README.md)
+Language:
+- Python (`py`)
+
+## [Day 9: Sensor Boost](./day_9/README.md)
+Language:
+- Python (`py`)
 
