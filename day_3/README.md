@@ -42,6 +42,12 @@ Here are a few more examples:
     U98,R91,D20,R16,D67,R40,U7,R15,U6,R7 = distance 135
 What is the Manhattan distance from the central port to the closest intersection?
 
+<details><summary>ANSWER</summary>
+
+#### 293
+
+</details>
+
 ## Part Two
 
 It turns out that this circuit is very timing-sensitive; you actually need to minimize the signal delay.
@@ -71,3 +77,9 @@ Here are the best steps for the extra examples from above:
     R98,U47,R26,D63,R33,U87,L62,D20,R33,U53,R51
     U98,R91,D20,R16,D67,R40,U7,R15,U6,R7 = 410 steps
 What is the fewest combined steps the wires must take to reach an intersection?
+
+<details><summary>ANSWER</summary>
+
+#### 27306
+
+</details>

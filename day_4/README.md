@@ -19,6 +19,12 @@ Other than the range rule, the following are true:
 
 How many different passwords within the range given in your puzzle input meet these criteria?
 
+<details><summary>ANSWER</summary>
+
+#### 2779
+
+</details>
+
 ## Part Two
 
 An Elf just remembered one more important detail: the two adjacent matching digits are not part of a larger group of matching digits.
@@ -30,3 +36,9 @@ Given this additional criterion, but still ignoring the range rule, the followin
 - 111122 meets the criteria (even though 1 is repeated more than twice, it still contains a double 22).
 
 How many different passwords within the range given in your puzzle input meet all of the criteria?
+
+<details><summary>ANSWER</summary>
+
+#### 108457-562041
+
+</details>
