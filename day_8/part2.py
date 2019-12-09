@@ -1,21 +1,9 @@
-from copy import deepcopy
 from itertools import dropwhile
 
-
-def _read(path):
-    with open(path, "r") as f:
-        return f.read()
-
-
-def group_list(items, group_size):
-    group = None
-    for i, item in enumerate(items):
-        if i % group_size == 0:
-            if group is not None:
-                yield group
-            group = list()
-        group.append(item)
-    yield group
+try:
+    import part1
+except ImportError:
+    import day_8.part1 as part1
 
 
 colors = {"1": " ", "2": "░", "0": "▉"}
@@ -29,21 +17,23 @@ def main(image):
     width = 25
     height = 6
 
-    layers = list(group_list(image, width * height))
+    layers = list(part1.group_list(image, width * height))
 
     transparent = "2"
 
     layers_transposed = transpose(layers)
 
     final_image_flat = list()
-    for l in layers_transposed:
-        color_num = next(dropwhile(lambda i: i == transparent, l))
+    for layer in layers_transposed:
+        color_num = next(dropwhile(lambda i: i == transparent, layer))
         final_image_flat.append(colors[color_num])
 
-    for l in group_list(final_image_flat, width):
-        print("".join(l))
+    for line in part1.group_list(final_image_flat, width):
+        print("".join(line))
 
 
 if __name__ == "__main__":
-    image = _read("input.txt")
+    with open("input.txt", "r") as f:
+        image = f.read()
+
     main(image)

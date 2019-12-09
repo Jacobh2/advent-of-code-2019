@@ -15,8 +15,6 @@ def _get_value(param, value, opcodes):
 
 
 def halt(args, params, opcodes):
-    print("HALT!!")
-    # raise Exception()
     return False, None, None
 
 
@@ -28,7 +26,7 @@ def add(args, params, opcodes):
     # z = x + y
     x_value = _get_value(params[0], args[0], opcodes)
     y_value = _get_value(params[1], args[1], opcodes)
-    z_value = args[2]  # _get_value(params[2], args[2], opcodes)
+    z_value = args[2]
     _store(z_value, x_value + y_value, opcodes)
     return True, None, None
 
@@ -37,14 +35,13 @@ def mul(args, params, opcodes):
     # z = x + y
     x_value = _get_value(params[0], args[0], opcodes)
     y_value = _get_value(params[1], args[1], opcodes)
-    z_value = args[2]  # _get_value(params[2], args[2], opcodes)
+    z_value = args[2]
     _store(z_value, x_value * y_value, opcodes)
     return True, None, None
 
 
 def store(args, params, opcodes, get_input=lambda: int(input("Input: "))):
-    address = args[0]  # _get_value(params[0], args[0], opcodes)
-    # value = int(input("Input: "))
+    address = args[0]
     value = get_input()
     _store(address, value, opcodes)
     return True, None, None
@@ -63,7 +60,9 @@ def pprint(args, params, opcodes, print_output=True):
 functions = {99: (halt, 0), 1: (add, 3), 2: (mul, 3), 3: (store, 1), 4: (pprint, 1)}
 
 
-def execute_intcomputer(opcodes, get_input_fn=None, print_output=True, continue_pc=None, name=None):
+def execute_intcomputer(
+    opcodes, get_input_fn=None, print_output=True, continue_pc=None, name=None
+):
     if continue_pc:
         pc = continue_pc
     else:
@@ -86,9 +85,13 @@ def execute_intcomputer(opcodes, get_input_fn=None, print_output=True, continue_
         args = opcodes[pc + 1 : pc + 1 + num_params]
 
         if fn == pprint:
-            should_continue, new_pc, output_ = fn(args, params, opcodes, print_output=print_output)
-        elif fn == store and  get_input_fn is not None:
-            should_continue, new_pc, output_ = fn(args, params, opcodes, get_input=get_input_fn)
+            should_continue, new_pc, output_ = fn(
+                args, params, opcodes, print_output=print_output
+            )
+        elif fn == store and get_input_fn is not None:
+            should_continue, new_pc, output_ = fn(
+                args, params, opcodes, get_input=get_input_fn
+            )
         else:
             should_continue, new_pc, output_ = fn(args, params, opcodes)
 
@@ -110,8 +113,6 @@ if __name__ == "__main__":
     from sys import argv
     from os.path import join
 
-    # folder_path = argv[0].split("/")[0]
-    # opcodes = _read_input(join(folder_path, "input.txt"))
     opcodes = _read_input("input.txt")
 
     execute_intcomputer(opcodes)

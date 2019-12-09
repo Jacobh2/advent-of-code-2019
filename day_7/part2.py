@@ -1,14 +1,13 @@
-import computer
+try:
+    import computer
+except ImportError:
+    import day_7.computer as computer
 
 from itertools import permutations
 from queue import Queue
 
 
-def threaded():
-    with open("input.txt", "r") as f:
-        input_str = f.read()
-
-    opcodes = list(map(int, input_str.split(",")))
+def main(opcodes):
 
     def create_computers():
         queues = [Queue(), Queue(), Queue(), Queue(), Queue()]
@@ -44,10 +43,14 @@ def threaded():
         outputs.append((ts[-1].last_output, phases))
 
     outputs.sort(key=lambda i: i[0], reverse=True)
-    print("Max:", outputs[0])
+    return outputs[0]
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level="DEBUG")
-    threaded()
+
+    with open("input.txt", "r") as f:
+        input_str = f.read()
+
+    opcodes = list(map(int, input_str.split(",")))
+    print(main(opcodes))
 

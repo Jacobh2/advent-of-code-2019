@@ -1,10 +1,4 @@
 from collections import defaultdict
-import operator
-
-
-def _read(path):
-    with open(path, "r") as f:
-        return f.read()
 
 
 def group_list(items, group_size):
@@ -24,18 +18,17 @@ def main(image):
 
     min_number = 9999
     saved_batch = None
-    for layer_index, batch in enumerate(group_list(image, width * height)):
-
+    for batch in group_list(image, width * height):
         count = batch.count("0")
         if count < min_number:
             min_number = count
             saved_batch = batch
 
-    ones = saved_batch.count("1")
-    twos = saved_batch.count("2")
-    print("Result:", ones * twos)
+    return saved_batch.count("1") * saved_batch.count("2")
 
 
 if __name__ == "__main__":
-    image = _read("input.txt")
-    main(image)
+    with open("input.txt", "r") as f:
+        image = f.read()
+
+    print("Result:", main(image))

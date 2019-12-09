@@ -1,5 +1,9 @@
-import computer
+try:
+    import computer
+except ImportError:
+    import day_9.computer as computer
 from queue import Queue
+
 
 def create_computer(opcodes):
     queue_in = Queue()
@@ -10,22 +14,17 @@ def create_computer(opcodes):
     return com, queue_in, queue_out
 
 
-if __name__ == "__main__":
-    # opcodes = [109,1,204,-1,1001,100,1,100,1008,100,16,101,1006,101,0,99]
-    # opcodes = [1102,34915192,34915192,7,4,7,99,0]
-    # opcodes = [104,1125899906842624,99]
+def run_computer(opcodes, run_code):
+    pc, qin, qout = create_computer(opcodes)
+    qin.put(run_code)
+    pc.join()
+    return list(qout.queue)
 
+
+if __name__ == "__main__":
     with open("input.txt", "r") as f:
         input_str = f.read()
 
     opcodes = list(map(int, input_str.split(",")))
 
-    pc, qin, qout = create_computer(opcodes)
-
-    qin.put(1)
-    pc.join()
-    
-    #21108
-    # op 8
-    # param 0112
-    print(list(qout.queue))
+    print(run_computer(opcodes, 1))
