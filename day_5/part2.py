@@ -45,8 +45,5 @@ part1.functions[8] = (equals, 3)
 
 
 if __name__ == "__main__":
-    from sys import argv
-    from os.path import join
-
-    opcodes = part1._read_input("input.txt")
+    opcodes = part1._read_input("day_5/input.txt")
     part1.execute_intcomputer(opcodes)

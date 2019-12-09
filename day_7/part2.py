@@ -48,9 +48,10 @@ def main(opcodes):
 
 if __name__ == "__main__":
 
-    with open("input.txt", "r") as f:
+    with open("day_7/input.txt", "r") as f:
         input_str = f.read()
 
     opcodes = list(map(int, input_str.split(",")))
-    print(main(opcodes))
+    result = main(opcodes)
+    print("Result:", result[0], "with phases", result[1])
 

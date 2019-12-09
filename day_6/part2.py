@@ -32,7 +32,7 @@ def calculate_orbit_jumps(input_str):
 
 
 if __name__ == "__main__":
-    input_str = part1._read_file("input.txt")
+    input_str = part1._read_file("day_6/input.txt")
 
     jumps = calculate_orbit_jumps(input_str)
     print("Jumps:", jumps)

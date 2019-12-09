@@ -5,9 +5,9 @@ except ImportError:
 
 
 if __name__ == "__main__":
-    with open("input.txt", "r") as f:
+    with open("day_9/input.txt", "r") as f:
         input_str = f.read()
 
     opcodes = list(map(int, input_str.split(",")))
 
-    print(part1.run_computer(opcodes, 2))
+    print("Result:", part1.run_computer(opcodes, 2)[0])

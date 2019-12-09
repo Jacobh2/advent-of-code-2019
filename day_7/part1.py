@@ -29,4 +29,5 @@ def _load_opcodes(path):
 
 if __name__ == "__main__":
     opcodes = _load_opcodes("day_7/input.txt")
-    print(main(opcodes))
+    result = main(opcodes)
+    print("Result:", result[0], "using phases", result[1])

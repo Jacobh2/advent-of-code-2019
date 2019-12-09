@@ -37,7 +37,7 @@ def is_allowed(code, low, high):
 
 if __name__ == "__main__":
     amount = 0
-    low, high = part1._read_input("input.txt")
+    low, high = part1._read_input("day_4/input.txt")
     for i in range(low, high + 1):
         if is_allowed(i, low, high):
             amount += 1

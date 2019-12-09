@@ -28,7 +28,7 @@ def main(image):
 
 
 if __name__ == "__main__":
-    with open("input.txt", "r") as f:
+    with open("day_8/input.txt", "r") as f:
         image = f.read()
 
     print("Result:", main(image))

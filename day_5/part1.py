@@ -110,9 +110,5 @@ def execute_intcomputer(
 
 
 if __name__ == "__main__":
-    from sys import argv
-    from os.path import join
-
-    opcodes = _read_input("input.txt")
-
+    opcodes = _read_input("day_5/input.txt")
     execute_intcomputer(opcodes)

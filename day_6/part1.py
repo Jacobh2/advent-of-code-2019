@@ -74,9 +74,9 @@ def calculate_checksum(input_str):
 
 
 if __name__ == "__main__":
-    input_str = _read_file("input.txt")
+    input_str = _read_file("day_6/input.txt")
 
-    total_cost = calculate_checksum(input_str)
+    total_cost = int(calculate_checksum(input_str))
 
     print("Total cost:", total_cost)
 

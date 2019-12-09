@@ -99,5 +99,5 @@ def calculate_best_intersection(wires1, wires2):
 
 
 if __name__ == "__main__":
-    w1, w2 = _read_input("input.txt")
+    w1, w2 = _read_input("day_3/input.txt")
     print("Best:", calculate_best_intersection(w1, w2))

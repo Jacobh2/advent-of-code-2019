@@ -22,9 +22,9 @@ def run_computer(opcodes, run_code):
 
 
 if __name__ == "__main__":
-    with open("input.txt", "r") as f:
+    with open("day_9/input.txt", "r") as f:
         input_str = f.read()
 
     opcodes = list(map(int, input_str.split(",")))
 
-    print(run_computer(opcodes, 1))
+    print("Result:", run_computer(opcodes, 1)[0])

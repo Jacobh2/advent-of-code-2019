@@ -1,4 +1,3 @@
-
 try:
     import part1
 except ImportError:
@@ -14,7 +13,7 @@ def _add_steps(positions, previous_position, position, position_set, for_x):
         for y in range(start_y, end_y, step):
             if (x, y) not in position_set:
                 positions.append((x, y))
-            position_set.add((x,y))
+            position_set.add((x, y))
     else:
         y = previous_position[1]
         step = -1 if previous_position[0] > position[0] else 1
@@ -23,7 +22,8 @@ def _add_steps(positions, previous_position, position, position_set, for_x):
         for x in range(start_x, end_x, step):
             if (x, y) not in position_set:
                 positions.append((x, y))
-            position_set.add((x,y))
+            position_set.add((x, y))
+
 
 def play_wire(origin, wires):
     positions = list()
@@ -33,7 +33,11 @@ def play_wire(origin, wires):
     for wire in wires:
         part1._calculate_coordinate(position, wire)
         _add_steps(
-            positions, previous_position, position, positions_set, wire.direction in {"D", "U"}
+            positions,
+            previous_position,
+            position,
+            positions_set,
+            wire.direction in {"D", "U"},
         )
         previous_position = list(position)
 
@@ -60,38 +64,24 @@ def calculate_timing(steps):
     x_, y_ = steps[0]
     total = 0
     for x, y in steps:
-        total += abs(x-x_)
-        total += abs(y-y_)
+        total += abs(x - x_)
+        total += abs(y - y_)
         x_ = x
         y_ = y
     return total
 
 
-
 def calculate_time_shortest_intersection(wires1, wires2):
     origin = (0, 0)
-    print("Playing wire 1...")
     p1 = play_wire(origin, part1._convert_to_direction(wires1))
-    # print("P1:", p1)
-    print("Playing wire 2...")
     p2 = play_wire(origin, part1._convert_to_direction(wires2))
-    # print("P2:", p2)
-    print("Getting intersections")
     ins = get_intersections(p1, p2)
     if origin in ins:
         ins.remove(origin)
-    # print("ins:", ins)
-    # print("same", p1[15])
-    # print("same", p2[15])
-    # print("A", p1[:15])
-    # print("B", p2[:15])
-    # print("T1:", calculate_timing(p1[:15]))
-    # print("T2:", calculate_timing(p2[:15]))
-    print("Calculating timing")
     timings = [calculate_timing(p1[:i1]) + calculate_timing(p2[:i2]) for i1, i2 in ins]
     return min(timings) + 2
 
 
 if __name__ == "__main__":
-    w1, w2 = part1._read_input("input.txt")
+    w1, w2 = part1._read_input("day_3/input.txt")
     print("Best:", calculate_time_shortest_intersection(w1, w2))
